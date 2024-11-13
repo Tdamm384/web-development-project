@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express(); 
 
+const nodemailer = require('nodemailer');
+
 const port = 3000; 
 
  
@@ -30,10 +32,19 @@ app.post('/submit-form', (req, res) => {
 
 }); 
 
+const transporter = nodemailer.createTransport({
+service: 'smtp.gmail.com',
+auth: {
+    user: 'tdamm101@gmail.com',
+    pass: ''
+
+}
+});
  
+transporter.sendMail(email, username)
 
 app.listen(port, () => { 
 
-    console.log(`Server running on http://localhost:${port}`); 
+    console.log(`Server running on port ${port}`); 
 
 }); 
