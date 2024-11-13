@@ -4,7 +4,7 @@ const app = express();
 
 const nodemailer = require('nodemailer');
 
-const port = 3000; 
+const port = 8080; 
 
  
 
@@ -32,6 +32,7 @@ app.post('/submit-form', (req, res) => {
 
 }); 
 
+//making transporter to send email
 const transporter = nodemailer.createTransport({
 service: 'smtp.gmail.com',
 auth: {
@@ -41,10 +42,11 @@ auth: {
 }
 });
  
+//sending form data to email
 transporter.sendMail(email, username)
 
 app.listen(port, () => { 
 
-    console.log(`Server running on port ${port}`); 
+    console.log(`Server running on port http://localhost:8080`); 
 
 }); 
